@@ -19,7 +19,7 @@ namespace AtapyTestTask
         }
 
         /* Calls itself recursively for each parent subcategory printing its name
-         * and then prints all parent category items info. */
+         * and then prints all parent subcategories items info. */
         static void HeirarchyPrint(int level, Type parent, IEnumerable<Type> types, List<Item> items)
         {
             var subcategories = types.Where(type => type.BaseType == parent);
