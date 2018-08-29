@@ -10,7 +10,45 @@ namespace AtapyTestTask
     {
         static void Main(string[] args)
         {
-            List<Item> Items = new List<Item>()
+            var Items = GetItemsList();
+            
+            var Books = from item in Items
+                        where item.GetType().BaseType == Type.GetType("AtapyTestTask.Book")
+                        group item by item.GetType();
+
+            var Disks = from item in Items
+                        where item.GetType().BaseType == Type.GetType("AtapyTestTask.Disk")
+                        group item by item.GetType();
+
+            Console.Out.WriteLine("КНИГИ\n");
+            PrintGroup(Books);
+            Console.Out.WriteLine("ДИСКИ\n");
+            PrintGroup(Disks);
+
+            Console.ReadKey();
+        }
+
+        static void PrintGroup(IEnumerable<IGrouping<Type, Item>> Groups)
+        {
+            foreach (var group in Groups)
+            {
+                string category;
+                if (Translator.Dict.TryGetValue(group.Key, out category))
+                    Console.Out.WriteLine(category + "\n");
+                else
+                    Console.Out.WriteLine(group.Key.Name + "\n");
+
+                foreach (var elem in group)
+                {
+                    elem.PrintProperties();
+                    Console.Out.WriteLine();
+                }
+            }
+        }
+
+        static List<Item> GetItemsList()
+        {
+            return new List<Item>()
             {
                 new ProgrammingBook { Name = "Deep Learning", Price = 735.50f, Barcode = "1", PageCount = 710, ProgLanguage = "Python" },
                 new ProgrammingBook { Name = "Effective C++", Price = 450.00f, Barcode = "2", PageCount = 430, ProgLanguage = "C++" },
@@ -24,8 +62,6 @@ namespace AtapyTestTask
                 new DVD { Name = "The Fifth Element", Price = 400.00f, Barcode = "10", Content = new Video() },
                 new DVD { Name = "Windows XP", Price = 1300.00f, Barcode = "11", Content = new Software() }
             };
-
-            // Здесь будет группировка и вывод
         }
     }
 }
