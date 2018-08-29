@@ -15,13 +15,14 @@ namespace AtapyTestTask
     {
         public DiskContent Content { get; set; }
 
-        public override void PrintProperties()
+        public override void PrintProperties(int level = 0)
         {
-            base.PrintProperties();
+            base.PrintProperties(level);
+            var tabs = new String('\t', level);
             if (TranslationDictionary.TryGetValue(Content.GetType(), out string name))
-                Console.Out.WriteLine("Содержание: {0}", name);
+                Console.Out.WriteLine(tabs + "Содержание: " + name);
             else
-                Console.Out.WriteLine("Содержание: {0}", Content.GetType().Name);
+                Console.Out.WriteLine(tabs + "Содержание: " + Content.GetType().Name);
         }
     }
 

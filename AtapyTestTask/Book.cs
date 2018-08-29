@@ -6,10 +6,11 @@ namespace AtapyTestTask
     {
         public int PageCount { get; set; }
 
-        public override void PrintProperties()
+        public override void PrintProperties(int level = 0)
         {
-            base.PrintProperties();
-            Console.Out.WriteLine("Количество страниц: {0}", PageCount);
+            base.PrintProperties(level);
+            var tabs = new String('\t', level);
+            Console.Out.WriteLine(tabs + "Количество страниц: " + PageCount);
         }
     }
 
@@ -17,10 +18,11 @@ namespace AtapyTestTask
     {
         public string ProgLanguage { get; set; }
 
-        public override void PrintProperties()
+        public override void PrintProperties(int level = 0)
         {
-            base.PrintProperties();
-            Console.Out.WriteLine("Язык программирования: {0}", ProgLanguage);
+            base.PrintProperties(level);
+            var tabs = new String('\t', level);
+            Console.Out.WriteLine(tabs + "Язык программирования: " + ProgLanguage);
         }
     }
 
@@ -28,10 +30,11 @@ namespace AtapyTestTask
     {
         public string MainIngredient { get; set; }
 
-        public override void PrintProperties()
+        public override void PrintProperties(int level = 0)
         {
-            base.PrintProperties();
-            Console.Out.WriteLine("Основной ингредиент: {0}", MainIngredient);
+            base.PrintProperties(level);
+            var tabs = new String('\t', level);
+            Console.Out.WriteLine(tabs + "Основной ингредиент: " + MainIngredient);
         }
     }
 
@@ -39,10 +42,11 @@ namespace AtapyTestTask
     {
         public int MinAge { get; set; }
 
-        public override void PrintProperties()
+        public override void PrintProperties(int level = 0)
         {
-            base.PrintProperties();
-            Console.Out.WriteLine("Минимальный возраст читателя: {0}", MinAge);
+            base.PrintProperties(level);
+            var tabs = new String('\t', level);
+            Console.Out.WriteLine(tabs + "Минимальный возраст читателя: " + MinAge);
         }
     }
 }

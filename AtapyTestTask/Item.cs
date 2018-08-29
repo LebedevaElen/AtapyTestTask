@@ -12,11 +12,12 @@ namespace AtapyTestTask
         public float Price { get; set; }
         public string Barcode { get; set; }
 
-        public virtual void PrintProperties()
+        public virtual void PrintProperties(int level = 0)
         {
-            Console.Out.WriteLine("Название: {0}", Name);
-            Console.Out.WriteLine("Цена: {0} у.е.", Price);
-            Console.Out.WriteLine("Штрихкод: {0}", Barcode);
+            var tabs = new String('\t', level);
+            Console.Out.WriteLine(tabs + "Название: " + Name);
+            Console.Out.WriteLine(tabs + "Цена: " + Price + " у.е.");
+            Console.Out.WriteLine(tabs + "Штрихкод: " + Barcode);
         }
     }
 }
