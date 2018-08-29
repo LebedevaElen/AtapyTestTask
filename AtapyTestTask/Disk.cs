@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static AtapyTestTask.Translator;
 
 namespace AtapyTestTask
 {
@@ -21,8 +18,8 @@ namespace AtapyTestTask
         public override void PrintProperties()
         {
             base.PrintProperties();
-            if (Translator.Dict.TryGetValue(Content.GetType(), out string cname))
-                Console.Out.WriteLine("Содержание: {0}", cname);
+            if (TranslationDictionary.TryGetValue(Content.GetType(), out string name))
+                Console.Out.WriteLine("Содержание: {0}", name);
             else
                 Console.Out.WriteLine("Содержание: {0}", Content.GetType().Name);
         }

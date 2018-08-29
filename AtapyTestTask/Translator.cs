@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AtapyTestTask
 {
     static public class Translator
     {
-        static public Dictionary<Type, string> Dict = new Dictionary<Type, string>()
+        static public Dictionary<Type, string> TranslationDictionary = new Dictionary<Type, string>()
         {
             { typeof(Book), "Книги" },
             { typeof(Disk), "Диски" },
