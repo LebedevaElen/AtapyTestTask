@@ -21,7 +21,10 @@ namespace AtapyTestTask
         public override void PrintProperties()
         {
             base.PrintProperties();
-            Console.Out.WriteLine("Содержание: {0}", Translator.Dict[Content.GetType()]);
+            if (Translator.Dict.TryGetValue(Content.GetType(), out string cname))
+                Console.Out.WriteLine("Содержание: {0}", cname);
+            else
+                Console.Out.WriteLine("Содержание: {0}", Content.GetType().Name);
         }
     }
 
